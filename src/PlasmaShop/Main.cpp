@@ -283,6 +283,8 @@ PlasmaShopMain::PlasmaShopMain()
     connect(fActions[kGenEncAes], SIGNAL(triggered()), this, SLOT(onGenEncAes()));
     connect(fActions[kGenEncDroid], SIGNAL(triggered()), this, SLOT(onGenEncDroid()));
 
+    connect(fActions[kHelpAbout], SIGNAL(triggered()), this, SLOT(onHelpAbout()));
+
     connect(fGameSelector, SIGNAL(activated(int)), this, SLOT(onSelectGame(int)));
     connect(fBrowserTree, SIGNAL(itemActivated(QTreeWidgetItem*, int)),
             this, SLOT(onBrowserItemActivated(QTreeWidgetItem*, int)));
@@ -1088,6 +1090,13 @@ void PlasmaShopMain::onGenEncDroid()
     QPlasmaDocument* doc = (QPlasmaDocument*)fEditorPane->currentWidget();
     doc->setEncryption(QPlasmaDocument::kEncDroid);
     setEncryption(kGenEncDroid);
+}
+
+void PlasmaShopMain::onHelpAbout()
+{
+    QMessageBox::about(this, "PlasmaShop " PLASMASHOP_VERSION,
+        "PlasmaShop is a flexible suite for editing Plasma game engine data and configuration files.\n\n"
+        PLASMASHOP_COPYRIGHT);
 }
 
 void PlasmaShopMain::onCloseTab(int idx)

@@ -128,6 +128,8 @@ private slots:
     void onGenEncAes();
     void onGenEncDroid();
 
+    void onHelpAbout();
+
     void onCloseTab(int idx);
     void onChangeTab(int idx);
     void onSelectGame(int gameId);
