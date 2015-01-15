@@ -1,6 +1,10 @@
 project(PlasmaShop)
 cmake_minimum_required(VERSION 2.8.11.2)
 
+# Set up Product Identification parameters
+set(PlasmaShop_COPYRIGHT     "Copyright (C) 2008-2015 Michael Hansen, et al"
+                                                CACHE STRING "PlasmaShop Copyright")
+
 find_package(HSPlasma REQUIRED)
 
 option(PlasmaShop_FORCE_QT4 "Force Qt4 build even if Qt5 can be found" OFF)
@@ -58,7 +62,7 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX OR
 endif()
 
 # Get the version number from git
-set(PlasmaShop_VERSION "3.0-untracked")
+set(PlasmaShop_VERSION "3.0-untracked" CACHE STRING "PlasmaShop Version")
 if(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     find_program(GIT_EXECUTABLE NAMES git git.cmd)
     mark_as_advanced(GIT_EXECUTABLE)
@@ -70,6 +74,7 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/.git")
     endif()
 endif()
 add_definitions(-DPLASMASHOP_VERSION="${PlasmaShop_VERSION}")
+add_definitions(-DPLASMASHOP_COPYRIGHT="${PlasmaShop_COPYRIGHT}")
 
 add_subdirectory(src/PlasmaShop)
 add_subdirectory(src/PrpShop)

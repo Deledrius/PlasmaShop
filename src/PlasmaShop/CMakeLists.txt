@@ -91,7 +91,11 @@ if(NOT WIN32 AND NOT APPLE)
 endif()
 
 if(WIN32)
-    set(PlasmaShop_Sources ${PlasmaShop_Sources} res/PlasmaShop.rc)
+    configure_file(
+        ${CMAKE_CURRENT_SOURCE_DIR}/res/PlasmaShop.rc.in
+        ${CMAKE_CURRENT_BINARY_DIR}/res/PlasmaShop.rc
+        @ONLY)
+    set(PlasmaShop_Sources ${PlasmaShop_Sources} ${CMAKE_CURRENT_BINARY_DIR}/res/PlasmaShop.rc)
 endif()
 
 if(PS_USE_QT5)
@@ -120,16 +124,16 @@ endif()
 target_link_libraries(PlasmaShop qscintilla2-ps3 HSPlasma)
 
 if(WIN32)
-    target_link_libraries(PlasmaShop shell32)
+    target_link_libraries(PlasmaShop shell32 version)
 endif()
 
 if(APPLE)
     set(MACOSX_BUNDLE true)
     set(MACOSX_BUNDLE_NAME PlasmaShop)
-    set(MACOSX_BUNDLE_INFO_STRING "PlasmaShop 3.0 BETA")
-    set(MACOSX_BUNDLE_LONG_VERSION_STRING "2.90")
-    set(MACOSX_BUNDLE_SHORT_VERSION_STRING "2.90")
-    set(MACOSX_BUNDLE_COPYRIGHT "Copyright (C) 2011 Michael Hansen")
+    set(MACOSX_BUNDLE_INFO_STRING "PlasmaShop ${PlasmaShop_VERSION} BETA")
+    set(MACOSX_BUNDLE_LONG_VERSION_STRING "${PlasmaShop_VERSION}")
+    set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${PlasmaShop_VERSION}")
+    set(MACOSX_BUNDLE_COPYRIGHT "${PlasmaShop_COPYRIGHT}")
     #set(MACOSX_BUNDLE_ICON_FILE "PlamsaShop.icns")
 
     install(TARGETS PlasmaShop

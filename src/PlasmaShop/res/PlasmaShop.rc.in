@@ -5,7 +5,7 @@
 # endif
 
 /* Icons */
-MAINICON                ICON    DISCARDABLE         "PlasmaShop.ico"
+MAINICON                ICON    DISCARDABLE         "@CMAKE_CURRENT_SOURCE_DIR@/res/PlasmaShop.ico"
 /* End of Icons */
 
 /* Version Info */
@@ -29,10 +29,10 @@ BEGIN
             VALUE "CompanyName", "Michael Hansen"
             VALUE "FileVersion", "3.0.0.158"
             VALUE "InternalName", "PlasmaShop"
-            VALUE "LegalCopyright", "Copyright (C) 2008 - 2009 Michael Hansen"
+            VALUE "LegalCopyright", "@PlasmaShop_COPYRIGHT@"
             VALUE "OriginalFilename", "PlasmaShop.exe"
             VALUE "ProductName", "PlasmaShop"
-            VALUE "ProductVersion", "3.0"
+            VALUE "ProductVersion", "@PlasmaShop_VERSION@"
         END
     END
     BLOCK "VarFileInfo"
